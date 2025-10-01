@@ -1,80 +1,129 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --navy-blue: #1e3a8a;
+  --navy-blue-light: #3b82f6;
+  --citrus-green: #22c55e;
+  --citrus-green-light: #4ade80;
+  --saffron-orange: #f97316;
+  --saffron-orange-light: #fb923c;
+  --teal: #0d9488;
+  --teal-light: #14b8a6;
+  --off-white: #f8fafc;
+  --light-gray: #e2e8f0;
+  --charcoal-gray: #334155;
+  --dark-gray: #1e293b;
+  
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+}
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-}
-.box {
-  height: 795px;
-  width: 1988px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.box .title {
-  height: 795px;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 1990px;
+body {
+  font-family: var(--font-family);
+  background-color: var(--off-white);
+  color: var(--charcoal-gray);
+  line-height: 1.6;
 }
 
-.box .overlap-group {
-  height: 795px;
-  position: relative;
-  width: 1988px;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.box .rectangle {
-  height: 200px;
-  left: 0;
-  position: absolute;
-  top: 595px;
-  width: 1980px;
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
 }
 
-.box .div {
-  background-color: #4db6ac;
-  height: 600px;
-  left: 7px;
-  position: absolute;
-  top: 0;
-  width: 1981px;
+::-webkit-scrollbar-thumb {
+  background: var(--navy-blue-light);
+  border-radius: 4px;
 }
 
-.box .ellipse {
-  height: 448px;
-  left: 182px;
-  object-fit: cover;
-  position: absolute;
-  top: 66px;
-  width: 468px;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--navy-blue);
 }
 
-.box .img {
-  height: 93px;
-  left: 1653px;
-  position: absolute;
-  top: 432px;
-  width: 91px;
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.box .logo {
-  height: 429px;
-  left: 203px;
-  object-fit: cover;
-  position: absolute;
-  top: 99px;
-  width: 429px;
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.box .AAVAJ-ADHIKAR {
-  color: #000000;
-  font-family: "Tiro Devanagari Sanskrit-Regular", Helvetica;
-  font-size: 96px;
-  font-weight: 400;
-  left: 872px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 127px;
-  width: 1094px;
+.btn-primary {
+  background: linear-gradient(135deg, var(--navy-blue), var(--navy-blue-light));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--citrus-green), var(--citrus-green-light));
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.8s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,17 +1,32 @@
-import React from "react";
-import "./style.css";
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Home from './pages/Home/Home'
+import Schemes from './pages/Schemes/Schemes'
+import SchemeDetail from './pages/SchemeDetail/SchemeDetail'
+import Dashboard from './pages/Dashboard/Dashboard'
+import ChatBot from './components/ChatBot/ChatBot'
+import { SchemeProvider } from './context/SchemeContext'
 
 function App() {
   return (
-    <div className="page">
-      <h1>AAVAJ &amp; ADHIKAR</h1>
-      <p>Empowering Citizens with Legal Awareness &amp; Government Schemes</p>
-      <p>
-        One platform for all welfare schemes, legal rights, and support in simple
-        language
-      </p>
-    </div>
-  );
+    <SchemeProvider>
+      <div className="App">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/schemes" element={<Schemes />} />
+            <Route path="/scheme/:id" element={<SchemeDetail />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </main>
+        <Footer />
+        <ChatBot />
+      </div>
+    </SchemeProvider>
+  )
 }
 
-export default App;
+export default App
