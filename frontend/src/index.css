@@ -4,3 +4,77 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
+.box {
+  height: 795px;
+  width: 1988px;
+}
+
+.box .title {
+  height: 795px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 1990px;
+}
+
+.box .overlap-group {
+  height: 795px;
+  position: relative;
+  width: 1988px;
+}
+
+.box .rectangle {
+  height: 200px;
+  left: 0;
+  position: absolute;
+  top: 595px;
+  width: 1980px;
+}
+
+.box .div {
+  background-color: #4db6ac;
+  height: 600px;
+  left: 7px;
+  position: absolute;
+  top: 0;
+  width: 1981px;
+}
+
+.box .ellipse {
+  height: 448px;
+  left: 182px;
+  object-fit: cover;
+  position: absolute;
+  top: 66px;
+  width: 468px;
+}
+
+.box .img {
+  height: 93px;
+  left: 1653px;
+  position: absolute;
+  top: 432px;
+  width: 91px;
+}
+
+.box .logo {
+  height: 429px;
+  left: 203px;
+  object-fit: cover;
+  position: absolute;
+  top: 99px;
+  width: 429px;
+}
+
+.box .AAVAJ-ADHIKAR {
+  color: #000000;
+  font-family: "Tiro Devanagari Sanskrit-Regular", Helvetica;
+  font-size: 96px;
+  font-weight: 400;
+  left: 872px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 127px;
+  width: 1094px;
+}
