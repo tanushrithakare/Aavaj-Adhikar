@@ -1,0 +1,122 @@
+.persona-section {
+  padding: 4rem 0;
+  background: var(--off-white);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.125rem;
+  color: var(--charcoal-gray);
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.persona-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--light-gray);
+}
+
+.persona-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.persona-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.persona-content {
+  position: relative;
+  z-index: 2;
+}
+
+.persona-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: 0.75rem;
+}
+
+.persona-description {
+  color: var(--charcoal-gray);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.persona-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--navy-blue);
+  padding: 0.5rem 1rem;
+  background: rgba(30, 58, 138, 0.1);
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.persona-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  transition: height 0.3s ease;
+  opacity: 0.05;
+}
+
+.persona-card:hover .persona-hover-effect {
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .persona-section {
+    padding: 2rem 0;
+  }
+  
+  .section-header h2 {
+    font-size: 1.875rem;
+  }
+  
+  .persona-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .persona-card {
+    padding: 1.5rem;
+  }
+}
