@@ -1,0 +1,4 @@
+Set-Content .gitignore "node_modules/"
+Add-Content .gitignore ".env"
+Add-Content .gitignore ".DS_Store"
+Add-Content .gitignore "*.log"

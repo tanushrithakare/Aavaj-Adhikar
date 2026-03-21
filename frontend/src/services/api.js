@@ -1,28 +1,34 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE = 'http://localhost:5000/api';
 
-export const api = {
-  // Schemes
-  getSchemes: (params = {}) => 
-    fetch(`${API_BASE_URL}/schemes?${new URLSearchParams(params)}`),
-  
-  getScheme: (id) => 
-    fetch(`${API_BASE_URL}/schemes/${id}`),
-  
-  getSchemesByCategory: (category) => 
-    fetch(`${API_BASE_URL}/schemes/category/${category}`),
+class ApiService {
+  async request(endpoint, options = {}) {
+    const url = `${API_BASE}${endpoint}`;
+    const response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+      ...options,
+    });
+    return response.json();
+  }
 
-  // Auth
-  register: (userData) => 
-    fetch(`${API_BASE_URL}/auth/register`, {
+  // Health check
+  async getHealth() {
+    return this.request('/health');
+  }
+
+  // Users
+  async getUsers() {
+    return this.request('/users');
+  }
+
+  async createUser(userData) {
+    return this.request('/users', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
-    }),
+      body: JSON.stringify(userData),
+    });
+  }
+}
 
-  login: (credentials) => 
-    fetch(`${API_BASE_URL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials)
-    })
-};
+export default new ApiService();
