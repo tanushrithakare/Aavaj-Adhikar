@@ -1,0 +1,103 @@
+﻿import React, { useState, useEffect, useRef } from "react";
+import "./ChatBot.css";
+
+const ChatBot = () => {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { 
+      text: "Hello! Welcome to Aavaj Adhikar. I'm your AI assistant here to help you discover government schemes. How can I assist you today?", 
+      isUser: false 
+    }
+  ]);
+  const [inputValue, setInputValue] = useState("");
+  const chatMessagesRef = useRef(null);
+
+  const handleSendMessage = () => {
+    if (!inputValue.trim()) return;
+    
+    // Add user message
+    setMessages(prev => [...prev, { text: inputValue, isUser: true }]);
+    setInputValue("");
+    
+    // Simulate bot response
+    setTimeout(() => {
+      const responses = [
+        "I can help you find government schemes for education, healthcare, agriculture, housing, employment, and senior citizens.",
+        "To find suitable schemes, please tell me your age, occupation, and income level.",
+        "You can browse schemes by category: Students, Farmers, Women, Health, or Senior Citizens.",
+        "Would you like me to help you check eligibility for any specific scheme?"
+      ];
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      setMessages(prev => [...prev, { text: randomResponse, isUser: false }]);
+    }, 1000);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
+  };
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+  };
+
+  useEffect(() => {
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  return (
+    <>
+      <button 
+        className={`chat-toggle ${isChatOpen ? "active" : ""}`} 
+        onClick={toggleChat}
+        aria-label="Toggle chat"
+      >
+        {isChatOpen ? "✕" : "💬"}
+      </button>
+
+      {isChatOpen && (
+        <div className="chat-container">
+          <div className="chat-header">
+            <h3>Scheme Assistant</h3>
+            <div className="status online">● Online</div>
+          </div>
+          
+          <div className="chat-messages" ref={chatMessagesRef}>
+            {messages.map((message, index) => (
+              <div 
+                key={index} 
+                className={`message ${message.isUser ? "user-message" : "bot-message"}`}
+              >
+                {message.text}
+              </div>
+            ))}
+          </div>
+          
+          <div className="chat-input-container">
+            <input
+              type="text"
+              className="chat-input"
+              placeholder="Type your message..."
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={handleKeyPress}
+              aria-label="Chat input"
+            />
+            <button 
+              className="send-button"
+              onClick={handleSendMessage}
+              aria-label="Send message"
+            >
+              ➤
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default ChatBot;
